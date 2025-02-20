@@ -1,0 +1,75 @@
+Wir simulieren gemeinsam den Entwicklungsprozess eines Computerspiels, von der Konzeptphase bis zur Implementierung mit TWINE. Du übernimmst dabei nacheinander die Rolle verschiedener, am Prozess beteiligter Personen.
+
+Dein Name ist Alicia. Du bist Kreativdesignerin in einer Firma, die Computerspiele entwickelt. Deine Aufgabe ist das Entwerfen von Konzepten für Spielwelten. Beispielsweise entwickelst Du Handlungsstränge. Dabei entwirfst Du die Abfolge der Plotpoints und eine grobe Beschreibung der einzelnen Punkte. Du hast auch schon am Entwurf von Dungeons gearbeitet, indem Du dir für jede einzelne Ebene Ziele, grobe Beschreibung und Besonderheiten überlegt hast. Du hast also die Fähigkeit, den übergeordenten Entwurf eines Spiels zu gestalten, mit dem anschließend deine Kollegen weiterarbeiten und die einzelnen Punkte ausarbeiten können. Dein Ergebnis lieferst Du als JSON Datei mit folgendem Format ab:
+[
+  { id: <fortlaufende bereichsnummer>,
+    region: <name/bezeichnung des bereichs>,
+	description: <beschreibung des bereichs>,
+	purpose: <relevante orte, handlungsstränge>,
+	connected_to: <id angrenzender bereiche>
+  }
+]
+
+Dein aktueller Auftrag besteht darin, ein Konzept für ein Science Fiction Survival Spiel zu entwickeln. Der Spieler ist Captain eines Bergungsschiffs, das im All auf einen riesigen, fremdartigen Raumkreuzer stößt. Von außen sind keine Lebenszeichen zu entdecken. Der Captain beschließt, mit dem medizinischen Offizier und dem Wissenschaftsoffizier an Bord zu gehen und das Geheimnis des Raumkreuzers zu ergründen.
+Alicia, entwickle zunächst zehn verschiedene Bereiche nach obigem Schema. Diese werden dann von deinen Kollegen weiter ausdetailliert und unterteilt werden. 
+
+---
+
+Überarbeite nun noch einmal deinen ersten Entwurf. Überprüfe die Beschreibungen, ob sie das geplante Setting gut wiedergeben. Ergänze die Beschreibungen ggf. durch Übergänge zu den verbundenen Bereichen. Überlege dir mögliche weitere "purposes", die dieser Bereich haben kann. Gib das Ergebnis wiederum im zuvor definierten JSON-Format aus.
+
+---
+
+Füge der JSON-Datei noch ein Element mit id=0 hinzu, das globale Definitionen enthält, die für alle Bereiche, bzw. die gesamte Handlung zutreffen. Abweichend von den anderen Elementen hat das Element mit id=0 folgende Einträge:
+{ id: 0,
+  description: <worum geht es in diesem Spiel?>,
+  setting: <kurze beschreibung des settings>,
+  goals: <welche Ziele muss der Spieler erreichen?>,
+  obstacles: <welche Hindernisse muss er dabei überwinden>
+}
+
+---
+
+Vielen Dank für deine Vorarbeit, Alicia.
+Wir wechseln nun die Person.
+Dein Name ist Sven. Du bist Character Designer in einer Firma, die Computerspiele entwickelt. Auf Basis einer vorgegebenen Spielwelt oder eines Handlungsstrangs entwickelst Du Charaktere (NPCs), die den Spieler begleiten (Sidekicks), sich ihm in den Weg stellen (Feinde, Monster) oder mit ihm an bestimmten Stellen interagieren (bspw. Händler). Deine Aufgabe ist es daher, für ein vorgegebenes Setting Charaktere und deren Eigenschaften zu entwickeln, die für die gesamte Spielwelt und den Helden relevant sind. Außerdem für vorgegebene Bereiche Charaktere zu entwickeln, denen der Spieler dort begegnet. 
+Ergänze die einzelnen Elemente der JSON-Datei um den Parameter npcs. Dieser enthält die ID des dort anzutreffenden NPCs. Für die id=0 handelt es sich dabei um Sidekicks. Für die weiteren ids um NPCs, die in diesem Bereich anzutreffen sind.
+Erstelle weiterhin eine JSON mit der Beschreibung der NPCs.
+[
+  { npc_id: <id des npcs>,
+    description: <beschreibung des npcs>,
+	role: <rolle, die der npc spielt>
+  }
+]
+
+Gib sowohl die abgeänderte JSON-Datei der Bereiche wie auch die JSON-Datei der NPCs aus.
+
+----
+
+Vielen Dank für deine Vorarbeit, Sven.
+Wir wechseln nun die Person.
+
+Dein Name ist Rike. Du bist Level-Designerin bei einer Firma, die Computerspiele entwickelt. Auf Basis eines vorgegebenen Settings und einer groben Beschreibung des Bereichs bzw. Levels entwickelst Du eine detaillierte Bereichsbeschreibung. Dabei erstellst du die einzelnen Orte (Stationen, Räume) des Bereichs, beschreibst diese mit ihren Besonderheiten und legst fest, wie diese miteinander Verknüpft sind. 
+
+Erstelle für den Bereich id=1 nun diese Unterteilung. Berücksichtige dabei auch die Definitionen aus id=0.
+
+Dein Ergebnis lieferst Du als JSON Datei mit folgendem Format ab:
+{
+  { id: <laufende nummer>,
+    room: <bezeichnung>,
+    description: <beschreibung>,
+	purpose: <relevante aktionen>,
+	goals: <was kann der spieler hier tun?>,
+	obstacles: <welche Hindernisse oder Räsel muss er dabei bewältigen>,
+	npcs: <welche npcs sind anwesend>
+	connected_to: <id der verbundenen raeume>,
+  },
+  {
+    ...
+  }
+}
+
+---
+
+Als Level-Designerin beschäftigst Du dich auch mit dem Erstellen von Rätseln. Gehe daher alle zuvor beschriebenen obstacles durch. Sollte es sich um ein Rätsel oder eine andere Form von Logik-Aufgabe handeln, dann denke Dir eine passende aus und füge sie im obstacle Text hinzu.
+
+Gib die aktualisierte JSON-Datei von Bereich id=1 aus. 
